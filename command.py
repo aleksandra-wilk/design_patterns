@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 # Receiver
 class Vaccum():
     def map(self):
@@ -13,7 +14,7 @@ class Command(ABC):
     @abstractmethod
     def execute(self):
         pass
-    
+
 
 class Mapping(Command):
     def __init__(self, vaccum):
@@ -21,6 +22,7 @@ class Mapping(Command):
 
     def execute(self):
         self.vaccum.map()
+
 
 class Scanning(Command):
     def __init__(self, vaccum):
@@ -40,6 +42,7 @@ class RemoteControl:
     def perform(self):
         self.command.execute()
 
+
 def main():
 
     vaccum = Vaccum()
@@ -49,5 +52,9 @@ def main():
     remote_control = RemoteControl()
     remote_control.set_command(scan_the_room)
     remote_control.perform()
+    
+    remote_control.set_command(map_the_room)
+    remote_control.perform()
+
 
 main()
