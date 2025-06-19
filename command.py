@@ -13,6 +13,7 @@ class Command(ABC):
     @abstractmethod
     def execute(self):
         pass
+    
 
 class Mapping(Command):
     def __init__(self, vaccum):
