@@ -10,6 +10,7 @@ class Vaccum():
 
 
 class Command(ABC):
+    @abstractmethod
     def execute(self):
         pass
 
