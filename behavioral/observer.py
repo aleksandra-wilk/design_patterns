@@ -35,30 +35,38 @@ class Channel(Subject):
     def detach(self, follower):
         self._observers.remove(follower)
 
-    def notify(self, message):
+    def notify(self, title, tag):
         for observer in self._observers:
-            observer.update(message)
+            observer.update(title, tag)
 
-    def add_video(self, title):
+    def add_video(self, title, tag):
         print(f"New video added with title: {title}")
-        self.notify(f"{self.channel_name} added a video: {title}")
+        tag = tag
+        self.notify(title, tag)
 
 
 class Follower(Observer):
 
-    def __init__(self, nickname):
+    def __init__(self, nickname, intrest):
         self.nickname = nickname
+        self.intrest = intrest
 
-    def update(self, message):
-        print(f"{self.nickname} got a message: {message}")
+    def update(self, title, tag):
+        if self.intrest == tag:
+            print(f'{self.nickname} liked "{title}" video')
 
 
 def main():
-    follower = Follower("alexandra159")
-    channel = Channel("Daily Cooking")
+    follower1 = Follower("alexandra159", "pilates")
+    follower2 = Follower("MMalon", "gym")
 
-    channel.attach(follower)
-    channel.add_video("Dinner propositions")
+    channel = Channel("Daily trainings")
+
+    channel.attach(follower1)
+    channel.attach(follower2)
+
+    channel.add_video("10 minutes Pliates training for strong core", "pilates")
+    channel.add_video("Exercises for upper body", "gym")
 
 
 main()
