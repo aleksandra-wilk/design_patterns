@@ -42,6 +42,7 @@ class ConcreteBuilder1(Builder):
     
 class Director:
     
+    # _builder because self.builder means to run builder setter
     def __init__(self):
         self._builder = None
         
