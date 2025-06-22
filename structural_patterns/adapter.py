@@ -29,5 +29,3 @@ if __name__ == "__main__":
     
     client_code(old, "Hello")
     client_code(adapter, "Hello New")
-        
-

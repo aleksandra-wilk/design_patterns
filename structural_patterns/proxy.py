@@ -37,4 +37,3 @@ if __name__ == "__main__":
     proxy_user.request()
     proxy_admin = Proxy('admin')
     proxy_admin.request()
-    
